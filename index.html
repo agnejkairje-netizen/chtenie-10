@@ -511,6 +511,41 @@ h2 {
   font-size: 1.1rem;
 }
 
+.shelf-open {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.shelf-open-title {
+  display: block;
+  font-weight: 850;
+  line-height: 1.25;
+}
+
+.shelf-open-hint {
+  display: inline-block;
+  margin-top: 7px;
+  color: var(--blue);
+  font-size: .72rem;
+  font-weight: 850;
+  text-transform: uppercase;
+  border-bottom: 2px solid currentColor;
+}
+
+.shelf-open:hover .shelf-open-hint,
+.shelf-open:focus-visible .shelf-open-hint {
+  color: var(--red);
+}
+
+.item-card.is-target {
+  outline: 4px solid var(--yellow);
+  outline-offset: 3px;
+}
+
 .shelf-marks {
   display: flex;
   gap: 8px;
@@ -530,61 +565,201 @@ h2 {
   }
 
   .hero-content {
-    padding: 42px 18px 24px;
+    padding: 28px 14px 18px;
   }
 
   .hero h1 {
     max-width: 100%;
-    font-size: clamp(2.55rem, 13vw, 4.2rem);
+    font-size: clamp(2.2rem, 11vw, 3.35rem);
   }
 
   .tabs {
-    gap: 7px;
-    margin-top: 28px;
+    gap: 6px;
+    margin-top: 20px;
   }
 
   .tab-button {
-    min-height: 48px;
-    padding: 8px 5px;
-    font-size: clamp(.72rem, 3.5vw, .92rem);
+    min-height: 42px;
+    padding: 6px 4px;
+    font-size: clamp(.68rem, 3.2vw, .84rem);
   }
 
   .hero-figure {
-    height: 280px;
+    height: 220px;
     border-top: 4px solid var(--line);
     border-left: 0;
   }
 
+  .hero-figure img {
+    object-fit: contain;
+    object-position: center;
+  }
+
   main {
-    width: min(100% - 28px, 1120px);
-    padding-top: 24px;
+    width: min(100% - 20px, 1120px);
+    padding-top: 16px;
+    padding-bottom: 42px;
+  }
+
+  .reading-rules, .toolbar, .section-heading, .route-card, .shelf-card, .no-results {
+    box-shadow: 4px 4px 0 var(--line);
   }
 
   .reading-rules {
     grid-template-columns: 1fr;
-    padding: 18px;
+    gap: 8px;
+    padding: 14px;
+    margin-bottom: 20px;
+    font-size: .88rem;
+  }
+
+  .reading-rules h2,
+  .section-heading h2 {
+    font-size: 1.55rem;
+    line-height: 1;
+  }
+
+  .rules-list {
+    margin-top: 10px;
+  }
+
+  .rules-list li + li {
+    margin-top: 5px;
+  }
+
+  .toolbar {
+    gap: 9px;
+    padding: 10px;
+    margin-bottom: 22px;
+  }
+
+  .search-box {
+    gap: 5px;
+    font-size: .78rem;
+  }
+
+  .search-box input {
+    padding: 8px 9px;
+  }
+
+  .filter-row {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .filter-button {
+    min-width: 0;
+    min-height: 38px;
+    padding: 3px;
+    font-size: .68rem;
+  }
+
+  .filter-button svg {
+    width: 27px;
+    height: 27px;
+  }
+
+  .legend {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .legend-item {
+    min-width: 0;
+    gap: 4px;
+    padding: 4px 5px;
+    font-size: .68rem;
+    line-height: 1.15;
+  }
+
+  .legend-item .kind {
+    width: 23px;
+    min-width: 23px;
+    height: 23px;
+  }
+
+  .legend-item .kind svg {
+    width: 22px;
+    height: 22px;
   }
 
   .route-toggle {
-    grid-template-columns: 1fr;
-    padding: 18px 16px 18px 28px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 10px;
+    padding: 14px 12px 14px 24px;
+  }
+
+  .route-title {
+    font-size: 1.08rem;
+    line-height: 1.02;
+  }
+
+  .route-meta {
+    margin-top: 5px;
+    font-size: .82rem;
+    line-height: 1.35;
   }
 
   .route-count {
-    width: 46px;
-    height: 46px;
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
   }
 
   .items {
-    padding: 0 12px 16px 28px;
+    padding: 0 10px 12px 24px;
   }
 
   .item-toggle {
-    grid-template-columns: 1fr;
+    min-height: 50px;
+    padding: 9px 10px;
+  }
+
+  .routes {
+    gap: 14px;
+  }
+
+  .section-heading {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .section-heading::after {
+    right: 12px;
+    top: 12px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .muted {
+    margin-top: 8px;
+    font-size: .86rem;
+    line-height: 1.4;
   }
 
   .shelf-summary {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .summary-tile {
+    padding: 12px;
+    box-shadow: 3px 3px 0 var(--line);
+  }
+
+  .summary-tile strong {
+    font-size: 2rem;
+  }
+
+  .summary-tile span {
+    font-size: .7rem;
+  }
+
+  .shelf-card {
+    padding: 13px;
   }
 }
 
@@ -1538,7 +1713,12 @@ function renderShelf() {
   shelfEl.innerHTML = saved.length ? saved.map((item) => `
     <article class="shelf-card">
       <p>${item.routeTitle}</p>
-      <h3>${item.title}${item.exam ? ` <span class="exam-badge" aria-label="Полезно для подготовки к ЕГЭ">ЕГЭ</span>` : ""}</h3>
+      <h3>
+        <button class="shelf-open" type="button" data-open-id="${item.id}" data-open-type="${item.itemType}" aria-label="Открыть описание: ${item.title}">
+          <span class="shelf-open-title">${item.title}${item.exam ? ` <span class="exam-badge" aria-label="Полезно для подготовки к ЕГЭ">ЕГЭ</span>` : ""}</span>
+          <span class="shelf-open-hint">Открыть описание</span>
+        </button>
+      </h3>
       ${renderActions(item)}
     </article>
   `).join("") : `<div class="no-results">Пока здесь пусто. Отметьте сердечком или галочкой книгу либо фильм, и они появятся на вашей полке.</div>`;
@@ -1556,6 +1736,36 @@ function setActiveTab(tab) {
 document.addEventListener("click", (event) => {
   const tab = event.target.closest(".tab-button");
   if (tab) setActiveTab(tab.dataset.tab);
+
+  const shelfOpen = event.target.closest(".shelf-open");
+  if (shelfOpen) {
+    const itemType = shelfOpen.dataset.openType;
+    const itemId = shelfOpen.dataset.openId;
+
+    if (itemType === "book") {
+      state.search = "";
+      state.kind = "all";
+      searchEl.value = "";
+      renderFilters();
+      renderRoutes();
+      setActiveTab("books");
+    } else {
+      setActiveTab("films");
+    }
+
+    const itemCard = document.getElementById(itemId);
+    const routeCard = itemCard?.closest(".route-card");
+    const routeToggle = routeCard?.querySelector(".route-toggle");
+    const itemToggle = itemCard?.querySelector(".item-toggle");
+
+    routeCard?.classList.add("is-open");
+    routeToggle?.setAttribute("aria-expanded", "true");
+    itemCard?.classList.add("is-open", "is-target");
+    itemToggle?.setAttribute("aria-expanded", "true");
+    itemCard?.scrollIntoView({ behavior: "smooth", block: "center" });
+    window.setTimeout(() => itemCard?.classList.remove("is-target"), 1800);
+    return;
+  }
 
   const filter = event.target.closest(".filter-button");
   if (filter) {
