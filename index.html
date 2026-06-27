@@ -1,0 +1,1604 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Летнее чтение для 10 класса</title>
+  <style>
+:root {
+  --paper: #f3ead7;
+  --paper-2: #fff8e8;
+  --ink: #111111;
+  --muted: #5f5a50;
+  --red: #e53928;
+  --blue: #1357a6;
+  --yellow: #f3c400;
+  --cream: #fff4d6;
+  --line: #111111;
+  --shadow: 7px 7px 0 #111111;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.55;
+  background:
+    linear-gradient(90deg, rgba(17,17,17,.055) 1px, transparent 1px),
+    linear-gradient(rgba(17,17,17,.045) 1px, transparent 1px),
+    var(--paper);
+  background-size: 28px 28px;
+}
+
+button, input { font: inherit; }
+button { color: inherit; }
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 4px solid var(--line);
+  background: #f8f0dc;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 34%;
+  height: 12px;
+  background: var(--yellow);
+}
+
+.hero-inner {
+  position: relative;
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+  min-height: 520px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 68px 48px 58px 0;
+}
+
+.eyebrow, .section-kicker, .section-label {
+  margin: 0 0 14px;
+  color: var(--blue);
+  font-size: .82rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.hero h1 {
+  max-width: 650px;
+  margin: 0;
+  font-size: clamp(3.2rem, 6.8vw, 6.7rem);
+  line-height: .9;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  font-weight: 950;
+}
+
+.hero h1 span {
+  display: block;
+  margin-top: .12em;
+  color: var(--blue);
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  width: min(100%, 620px);
+  margin-top: 38px;
+}
+
+.tab-button, .filter-button, .mark-button {
+  border: 3px solid var(--line);
+  background: var(--paper-2);
+  cursor: pointer;
+  font-weight: 850;
+  min-height: 44px;
+  transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+}
+
+.tab-button {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 52px;
+  padding: 10px 12px;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0 var(--line);
+}
+
+.tab-button:hover, .filter-button:hover, .mark-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--line);
+}
+
+.tab-button.is-active {
+  background: var(--blue);
+  color: #fff;
+}
+
+.hero-figure {
+  position: relative;
+  align-self: stretch;
+  margin: 0;
+  overflow: hidden;
+  border-left: 4px solid var(--line);
+  background: #e8551a;
+}
+
+.hero-figure::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 32%;
+  background: var(--yellow);
+}
+
+.hero-figure::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  width: 28px;
+  height: 22%;
+  background: var(--blue);
+}
+
+.hero-figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+}
+
+main {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 34px 0 72px;
+}
+
+.reading-rules, .toolbar, .section-heading, .route-card, .shelf-card, .no-results {
+  background: var(--paper-2);
+  border: 3px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.reading-rules {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 24px;
+  padding: 24px;
+  margin-bottom: 28px;
+}
+
+h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 4vw, 3rem);
+  line-height: .98;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.rules-list {
+  margin: 16px 0 0;
+  padding-left: 1.1rem;
+}
+
+.rules-list li + li { margin-top: 8px; }
+
+.toolbar {
+  display: grid;
+  gap: 18px;
+  padding: 18px;
+  margin-bottom: 34px;
+}
+
+.search-box {
+  display: grid;
+  gap: 8px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.search-box input {
+  width: 100%;
+  border: 3px solid var(--line);
+  background: var(--cream);
+  padding: 13px 14px;
+  outline: none;
+}
+
+.search-box input:focus {
+  box-shadow: 0 0 0 4px var(--yellow);
+}
+
+.filter-row, .legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-button {
+  display: inline-grid;
+  place-items: center;
+  min-width: 54px;
+  padding: 8px 12px;
+}
+
+.filter-button.is-active {
+  background: var(--yellow);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 2px solid var(--line);
+  background: var(--cream);
+  font-size: .92rem;
+}
+
+.kind {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+}
+
+.kind svg {
+  width: 34px;
+  height: 34px;
+  display: block;
+}
+
+.panel { display: none; }
+.panel.is-active { display: block; }
+.book-only.is-hidden { display: none; }
+
+.section-heading {
+  position: relative;
+  padding: 22px 24px;
+  margin-bottom: 24px;
+}
+
+.section-heading::after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 46px;
+  height: 46px;
+  background: var(--blue);
+  border: 3px solid var(--line);
+}
+
+.muted {
+  max-width: 760px;
+  color: var(--muted);
+  margin: 12px 0 0;
+}
+
+.routes {
+  display: grid;
+  gap: 22px;
+}
+
+.route-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.route-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 14px;
+  background: var(--red);
+}
+
+.route-1::before { background: var(--blue); }
+.route-2::before { background: var(--yellow); }
+.route-3::before { background: var(--ink); }
+.route-4::before { background: var(--red); }
+.route-5::before { background: var(--blue); }
+
+.route-toggle, .item-toggle {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.route-toggle {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 22px 22px 22px 34px;
+}
+
+.route-title {
+  display: block;
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 950;
+  line-height: 1.04;
+  text-transform: uppercase;
+}
+
+.route-meta {
+  display: block;
+  color: var(--muted);
+  margin-top: 7px;
+}
+
+.route-count {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border: 3px solid var(--line);
+  border-radius: 50%;
+  background: var(--yellow);
+  font-weight: 950;
+  font-size: 1.25rem;
+}
+
+.items {
+  display: none;
+  padding: 0 18px 22px 34px;
+}
+
+.route-card.is-open .items {
+  display: grid;
+  gap: 12px;
+}
+
+.item-card {
+  border: 2px solid var(--line);
+  background: var(--cream);
+}
+
+.item-toggle {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  align-items: center;
+  min-height: 58px;
+  padding: 12px 14px;
+}
+
+.item-title {
+  font-weight: 850;
+  line-height: 1.18;
+}
+
+.item-heading {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+}
+
+.exam-badge {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  min-width: 42px;
+  min-height: 30px;
+  padding: 3px 7px;
+  border: 2px solid var(--line);
+  background: var(--yellow);
+  color: var(--ink);
+  font-size: .72rem;
+  font-weight: 950;
+  line-height: 1;
+  text-transform: uppercase;
+  transform: rotate(-2deg);
+  box-shadow: 2px 2px 0 var(--red);
+  vertical-align: middle;
+}
+
+.item-description {
+  display: none;
+  border-top: 2px solid var(--line);
+  padding: 4px 14px 14px;
+}
+
+.item-card.is-open .item-description {
+  display: block;
+}
+
+.item-description p {
+  margin: 12px 0;
+}
+
+.book-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.mark-button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.mark-button.is-active:first-child {
+  color: #fff;
+  background: var(--red);
+}
+
+.mark-button.is-active:last-child {
+  color: #fff;
+  background: var(--blue);
+}
+
+.shelf-summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.summary-tile {
+  border: 3px solid var(--line);
+  background: var(--yellow);
+  padding: 18px;
+  box-shadow: 5px 5px 0 var(--line);
+}
+
+.summary-tile strong {
+  display: block;
+  font-size: 2.6rem;
+  line-height: 1;
+}
+
+.summary-tile span {
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.shelf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.shelf-card {
+  padding: 18px;
+}
+
+.shelf-card p {
+  margin: 0 0 8px;
+  color: var(--blue);
+  font-weight: 850;
+  text-transform: uppercase;
+  font-size: .78rem;
+}
+
+.shelf-card h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.shelf-marks {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+  font-size: 1.3rem;
+}
+
+.no-results {
+  padding: 22px;
+}
+
+@media (max-width: 720px) {
+  .hero-inner {
+    width: 100%;
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-content {
+    padding: 42px 18px 24px;
+  }
+
+  .hero h1 {
+    max-width: 100%;
+    font-size: clamp(2.55rem, 13vw, 4.2rem);
+  }
+
+  .tabs {
+    gap: 7px;
+    margin-top: 28px;
+  }
+
+  .tab-button {
+    min-height: 48px;
+    padding: 8px 5px;
+    font-size: clamp(.72rem, 3.5vw, .92rem);
+  }
+
+  .hero-figure {
+    height: 280px;
+    border-top: 4px solid var(--line);
+    border-left: 0;
+  }
+
+  main {
+    width: min(100% - 28px, 1120px);
+    padding-top: 24px;
+  }
+
+  .reading-rules {
+    grid-template-columns: 1fr;
+    padding: 18px;
+  }
+
+  .route-toggle {
+    grid-template-columns: 1fr;
+    padding: 18px 16px 18px 28px;
+  }
+
+  .route-count {
+    width: 46px;
+    height: 46px;
+  }
+
+  .items {
+    padding: 0 12px 16px 28px;
+  }
+
+  .item-toggle {
+    grid-template-columns: 1fr;
+  }
+
+  .shelf-summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <p class="eyebrow">История XX века</p>
+        <h1>Летнее чтение <span>для 10&nbsp;класса</span></h1>
+        <nav class="tabs" aria-label="Разделы сайта">
+          <button class="tab-button is-active" data-tab="books">Книги</button>
+          <button class="tab-button" data-tab="films">Фильмы</button>
+          <button class="tab-button" data-tab="shelf">Моя полка</button>
+        </nav>
+      </div>
+      <figure class="hero-figure" aria-hidden="true">
+        <img src="data:image/jpeg;base64,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" alt="">
+      </figure>
+    </div>
+  </header>
+
+  <main>
+    <section class="reading-rules book-only" aria-labelledby="rules-title">
+      <div class="section-label">Как читать</div>
+      <div>
+        <h2 id="rules-title">Не весь список, а свой маршрут</h2>
+        <div id="intro"></div>
+      </div>
+    </section>
+
+    <section class="toolbar book-only" aria-label="Поиск и фильтр">
+      <label class="search-box">
+        <span>Поиск</span>
+        <input id="search" type="search" placeholder="Автор, книга или тема">
+      </label>
+      <div class="filter-row" id="kindFilters" aria-label="Тип книги"></div>
+      <div class="legend" id="kindLegend" aria-label="Пояснение символов"></div>
+    </section>
+
+    <section id="booksPanel" class="panel is-active" aria-label="Маршруты чтения">
+      <div class="routes" id="routes"></div>
+    </section>
+
+    <section id="shelfPanel" class="panel" aria-labelledby="shelf-title">
+      <div class="section-heading">
+        <p class="section-kicker">Личная полка</p>
+        <h2 id="shelf-title">То, что вы отметили</h2>
+        <p class="muted">Здесь сохраняются книги и фильмы, которые вы лайкнули, прочитали или посмотрели на этом устройстве.</p>
+      </div>
+      <div class="shelf-summary" id="shelfSummary"></div>
+      <div class="shelf-grid" id="shelf"></div>
+    </section>
+
+    <section id="filmsPanel" class="panel" aria-labelledby="films-title">
+      <div class="section-heading">
+        <p class="section-kicker">Фильмы</p>
+        <h2 id="films-title">Смотреть XX век</h2>
+        <p class="muted">Здесь можно выбрать художественный фильм или документальный цикл — о войне и мирной жизни, власти и свободе, больших переменах и судьбах людей в XX веке.</p>
+      </div>
+      <div class="routes" id="filmRoutes"></div>
+    </section>
+  </main>
+
+  <script>
+const readingData = {
+  "intro": [
+    "Не пытайтесь прочитать всё. Этот список устроен как несколько дорог в историю: выберите ту, которая действительно вас зацепила.",
+    "Можно взять один маршрут, а можно два. Внутри маршрута лучше соединить разные голоса: роман, научно-популярную книгу, мемуары, дневник или историческое исследование.",
+    "Большие книги не обязательно читать от первой до последней страницы. Иногда достаточно выбранных глав, если читать их внимательно и с интересом.",
+    "Во время чтения спрашивайте себя: кто говорит в этой книге, как автор смотрит на эпоху, кому он сочувствует и какие вопросы остаются после последней страницы.",
+    "Главная цель — не количество прочитанных страниц, а встреча с прошлым: живым, сложным, спорным и очень человеческим."
+  ],
+  "routes": [
+    {
+      "id": "route-1",
+      "title": "Революция, утопия и государство",
+      "mood": "О том, как надежда на новый мир обернулась революцией, войной и рождением нового государства",
+      "books": [
+        {
+          "id": "book-1",
+          "title": "Шейла Фицпатрик. «Русская революция»",
+          "kind": "историческое исследование",
+          "description": [
+            "Короткая и очень ясная книга о русской революции как о большом историческом процессе. Фицпатрик показывает не только 1917 год, но и то, что было до и после него: кризис империи, Февраль, Октябрь, Гражданскую войну, НЭП и сталинский перелом. Это хорошая книга для того, чтобы заново собрать общую картину и увидеть революцию не как набор дат, а как долгую и очень сложную перестройку общества.",
+            "Читать можно целиком: книга не слишком большая и написана достаточно понятно."
+          ]
+        },
+        {
+          "id": "book-2",
+          "title": "Джон Рид. «Десять дней, которые потрясли мир»",
+          "kind": "мемуары",
+          "description": [
+            "Книга американского журналиста, который оказался в Петрограде во время Октябрьской революции и увидел события совсем близко: митинги, заседания, уличную тревогу, слухи, споры, надежду, хаос и ощущение, что история происходит прямо сейчас. Это живой и очень увлечённый текст, написанный человеком, который явно сочувствует революции и заражён её энергией.",
+            "Читать стоит не как нейтральный учебник, а как свидетельство очевидца. Рид помогает почувствовать атмосферу момента, но его взгляд пристрастен."
+          ]
+        },
+        {
+          "id": "book-3",
+          "title": "Александр Блок. «Двенадцать»",
+          "kind": "художественная",
+          "description": [
+            "Поэма о революционном Петрограде: метель, улица, красногвардейцы, грубая речь, насилие, тревога, исчезновение старого мира и странное чувство движения вперёд. Это не объяснение революции и не политическая программа, а нервный, рваный, музыкальный текст, в котором революция ощущается как буря — страшная, грязная, разрушительная и одновременно почти мистическая.",
+            "Читать лучше медленно и вслух: здесь очень важны ритм, звук, резкие смены интонации. Не стоит искать простой ответ, «за» Блок революцию или «против». Гораздо интереснее увидеть, как он соединяет хаос улицы, насилие, религиозные образы и чувство исторической неизбежности. Хороший вопрос для чтения: почему революция у Блока одновременно пугает и завораживает?"
+          ]
+        },
+        {
+          "id": "book-4",
+          "title": "Михаил Булгаков. «Белая гвардия»",
+          "kind": "художественная",
+          "description": [
+            "Роман о Киеве времён Гражданской войны: смена властей, тревога, офицеры, семья Турбиных, дом, который ещё пытается оставаться островком порядка, и мир, который рушится вокруг. Булгаков показывает революцию и Гражданскую войну не через лозунги, а через частную жизнь людей, для которых история становится не темой из газет, а холодом, страхом, потерей близких и невозможностью жить по-старому.",
+            "Читать стоит как роман о распаде привычного мира. Важно обращать внимание на дом Турбиных: что он значит для героев, почему так важны лампа, книги, разговоры, память, семейное тепло. И рядом с этим — как быстро большой исторический перелом разрушает то, что казалось прочным."
+          ]
+        },
+        {
+          "id": "book-5",
+          "title": "Ирина Головкина. «Лебединая песнь»",
+          "kind": "художественная",
+          "description": [
+            "Роман о людях старой России, которые после революции оказываются в новом мире как «бывшие»: подозрительные, лишние, плохо приспособленные, слишком связанные со своим прошлым. Это книга не о революции как празднике нового начала, а о её долгом послесловии: бедности, страхе, унижении, семейной памяти, верности своему кругу и невозможности жить так, как раньше.",
+            "Читать стоит как текст о побеждённых. Но важно не превращать его просто в ностальгию по старой России. Гораздо интереснее смотреть, как новый порядок меняет частную жизнь: отношения между людьми, чувство безопасности, язык, привычки, право помнить своё прошлое и оставаться собой."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "route-2",
+      "title": "Тоталитаризм, диктатуры и человек внутри системы",
+      "mood": "О людях, которые пытались сохранить себя рядом с властью, страхом и насилием",
+      "books": [
+        {
+          "id": "book-9",
+          "title": "Шейла Фицпатрик. «Команда Сталина»",
+          "kind": "историческое исследование",
+          "description": [
+            "Эта книга показывает сталинскую систему сверху — через людей, которые находились рядом со Сталиным и помогали управлять страной. Фицпатрик пишет о ближайшем окружении вождя: их лояльности, страхе, конкуренции, привычке выполнять решения, оправдывать насилие и выживать внутри опасной политической машины.",
+            "Читать стоит как книгу не только о Сталине, но и о механизме власти. Полезно спрашивать: почему диктатура держится не на одном человеке? как работает круг приближённых? где заканчивается страх и начинается соучастие? почему люди, сами находящиеся в опасности, продолжают поддерживать систему?"
+          ]
+        },
+        {
+          "id": "book-10",
+          "title": "Себастьян Хафнер. «История одного немца»",
+          "kind": "мемуары",
+          "description": [
+            "Мемуарная книга о том, как обычный образованный немец переживает приход нацизма к власти. Хафнер пишет не о лагерях и не о верхушке режима, а о том, как диктатура постепенно входит в повседневность: меняет разговоры, дружбу, работу, новости, чувство безопасности и представление человека о самом себе.",
+            "Читать стоит как текст о внутреннем выборе. Особенно важно следить за тем, как быстро люди привыкают к ненормальному: кто сопротивляется, кто приспосабливается, кто делает вид, что ничего особенного не происходит. Один из главных вопросов к книге: в какой момент «переждать» становится формой согласия?"
+          ]
+        },
+        {
+          "id": "book-13",
+          "title": "Варлам Шаламов. «Колымские рассказы»",
+          "kind": "мемуары",
+          "description": [
+            "Короткие рассказы о лагерном опыте на Колыме. У Шаламова лагерь — это не место нравственного очищения и не школа мужества, а пространство крайнего истощения, холода, голода, унижения и распада человеческих связей. Его проза очень сдержанная, почти сухая, но от этого ещё более страшная.",
+            "Читать лучше выборочно, не весь сборник подряд. После каждого рассказа стоит останавливаться и спрашивать: что лагерь делает с человеком? что остаётся от личности, памяти, дружбы, морали, когда все силы уходят только на выживание?"
+          ]
+        },
+        {
+          "id": "book-14",
+          "title": "Александр Солженицын. «Один день Ивана Денисовича»",
+          "kind": "мемуары",
+          "description": [
+            "Короткая повесть об одном дне заключённого в советском лагере. Здесь нет большого исторического обзора, но есть очень точная лагерная повседневность: холод, работа, еда, нормы, бригада, мелкие хитрости, усталость и маленькие победы, из которых складывается день.",
+            "Читать стоит как вход в тему лагеря через один человеческий опыт. Важно замечать не только жестокость системы, но и то, как герой сохраняет достоинство в мелочах: в работе, внимательности, умении не сломаться, не потерять себя полностью."
+          ]
+        },
+        {
+          "id": "book-15",
+          "title": "Ольга Адамова-Слиозберг. «Путь»",
+          "kind": "мемуары",
+          "description": [
+            "Воспоминания женщины, прошедшей через арест, тюрьму, лагерь, ссылку и возвращение. Это не абстрактная история репрессий, а путь конкретного человека, у которого государство отнимает дом, семью, безопасность, имя и нормальное течение жизни. Особенно важно, что это женское свидетельство о терроре и лагерном опыте.",
+            "Читать стоит как историю сохранения себя внутри системы, которая пытается человека уничтожить или стереть. Полезно обращать внимание на то, как меняется жизнь после ареста: что происходит с семьёй, дружбой, памятью, надеждой, чувством собственного достоинства."
+          ]
+        },
+        {
+          "id": "book-16",
+          "title": "Юрий Домбровский. «Факультет ненужных вещей»",
+          "kind": "художественная",
+          "description": [
+            "Роман о человеке внутри советской репрессивной системы: страхе, следствии, давлении, предательстве, достоинстве и попытке не согласиться с ложью. Главный герой оказывается в мире, где власть требует не только подчинения, но и внутреннего признания своей правоты. Это книга о том, как трудно сохранить себя, когда система пытается сломать человека не только внешне, но и нравственно.",
+            "Читать лучше тем, кто готов к серьёзному и довольно тяжёлому тексту. Но очень красиво написанному."
+          ]
+        },
+        {
+          "id": "book-17",
+          "title": "Николай Заболоцкий. «История моего заключения»",
+          "kind": "мемуары",
+          "description": [
+            "Короткий мемуарный текст поэта Николая Заболоцкого о его аресте в 1938 году, следствии, давлении, страхе и опыте лагеря. Это не большая книга о ГУЛАГе, а очень сдержанное и точное свидетельство человека, который оказался внутри репрессивной машины и попытался сохранить ясность сознания, достоинство и верность другим людям.",
+            "Читать стоит как личный исторический источник. Важно обращать внимание не только на факты ареста и заключения, но и на внутреннюю позицию автора: как он описывает страх, давление, следствие, попытку не оговорить других и не принять ложь как правду. Это небольшой, но сильный текст о том, как история ломает человека — и о том, что помогает не сломаться окончательно."
+          ]
+        },
+        {
+          "id": "book-58",
+          "title": "Гузель Яхина. «Эйзен»",
+          "kind": "художественная",
+          "description": [
+            "«Эйзен» — роман о Сергее Эйзенштейне, режиссёре, который снял «Броненосец “Потёмкин”» и стал одним из главных людей в истории кино. Но это не сухая биография с перечислением дат. Книга написана так, будто сама пытается думать по-киношному: через сцены, образы, обрывки памяти, движение, монтаж, внутренние разговоры и фантазию.",
+            "Читать её стоит тем, кому интересно, как человек искусства живёт внутри большой и опасной эпохи. Эйзенштейн оказывается между своим талантом, властью, славой, страхом, желанием снимать настоящее кино и необходимостью существовать в советской системе. Эта книга не только про одного режиссёра, но и про то, как искусство связано с революцией, государством, пропагандой, свободой и личной уязвимостью человека, от которого ждут великих образов."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "route-3",
+      "title": "Вторая мировая война: фронт, тыл, оккупация, Холокост, память",
+      "mood": "О войне, увиденной на фронте и в тылу, в оккупации и в человеческой памяти",
+      "books": [
+        {
+          "id": "book-60",
+          "title": "Оливия Мэннинг. «Балканская трилогия»",
+          "kind": "художественная",
+          "description": [
+            "«Балканская трилогия» — это история о людях, которых война застаёт не на фронте, а в обычной жизни. Молодая английская пара оказывается в Румынии, потом в Греции, вокруг всё ещё вроде бы продолжается: люди ходят в гости, разговаривают, спорят, влюбляются, ссорятся, строят планы. Но постепенно становится ясно, что прежний мир уже не удержать: война приближается, новости становятся всё тревожнее, а жизнь превращается в ожидание отъезда, опасности и неизвестности.",
+            "Эту книгу стоит читать тем, кому интересно понять, как большая история входит в жизнь не сразу громом, а медленно и почти незаметно. Здесь важны не только события Второй мировой, но и чувство времени: чужой город, эмигрантская среда, слухи, страх, усталость, попытка сохранить нормальность, когда она уже разваливается. Это хороший текст о войне без привычного героического сюжета — о людях, которые просто пытаются жить, пока история уносит их всё дальше от дома."
+          ]
+        },
+        {
+          "id": "book-18",
+          "title": "Светлана Алексиевич. «У войны не женское лицо»",
+          "kind": "мемуары",
+          "description": [
+            "Книга о женщинах на войне: снайперах, санитарках, связистках, лётчицах, медсёстрах, партизанках. Алексиевич собирает голоса тех, кто часто оставался в стороне от привычного рассказа о войне. Здесь война видна не только через подвиг, но и через страх, усталость, боль, стыд, любовь, смерть и невозможность потом вернуться к обычной жизни.",
+            "Читать стоит как книгу свидетельств, а не как обычный роман. Важно слушать разные голоса и замечать, как личная память отличается от официального рассказа о войне. Это тяжёлое чтение, лучше не читать весь текст подряд, а делать паузы."
+          ]
+        },
+        {
+          "id": "book-19",
+          "title": "Даниил Гранин, Алесь Адамович. «Блокадная книга»",
+          "kind": "мемуары",
+          "description": [
+            "Один из главных текстов о блокаде Ленинграда. Это книга, собранная из свидетельств людей, которые пережили голод, холод, смерть близких, страх, истощение и распад привычной жизни. Война здесь проходит не только по линии фронта, а через дом, лестницу, очередь за хлебом, комнату, тело человека.",
+            "Читать лучше фрагментами. Это очень тяжёлый текст, но важный именно потому, что он показывает опыт мирных жителей внутри катастрофы. Во время чтения стоит обращать внимание на то, как люди пытаются сохранить достоинство и человеческие связи там, где почти всё направлено на выживание."
+          ]
+        },
+        {
+          "id": "book-20",
+          "title": "Эдит Эгер. «Выбор»",
+          "kind": "мемуары",
+          "description": [
+            "Воспоминания женщины, пережившей Аушвиц. Но эта книга не только о лагере, а ещё и о том, что происходит после: как травма остаётся в человеке, как память возвращается, как страх, вина и боль могут жить десятилетиями. Эгер пишет о выживании, внутренней свободе и очень трудном возвращении к себе.",
+            "Читать стоит как свидетельство о травме и памяти. Это не полная история Холокоста и не историческое исследование лагерной системы, а личный рассказ о том, что с человеком происходит после катастрофы. Главный вопрос к книге: что значит выжить — и как потом снова научиться жить?"
+          ]
+        },
+        {
+          "id": "book-21",
+          "title": "Виктор Некрасов. «В окопах Сталинграда»",
+          "kind": "художественная",
+          "description": [
+            "Фронтовая проза о Сталинградской битве, написанная человеком, который сам воевал. Некрасов показывает войну без лишней парадности: окопы, усталость, страх, работа, товарищество, ожидание, выдержка и повседневная жизнь на фронте. Это не роман о красивом героизме, а текст о людях внутри войны.",
+            "Читать стоит как свидетельство фронтового опыта. Важно смотреть не только на события, но и на интонацию: как герои говорят, чего боятся, что считают нормальным, как сохраняют спокойствие там, где спокойствие почти невозможно."
+          ]
+        },
+        {
+          "id": "book-23",
+          "title": "Кейт Куинн. «Код Розы»",
+          "kind": "художественная",
+          "description": [
+            "Художественный роман о Блетчли-парке — британском центре дешифровки во время Второй мировой войны. В центре книги три женщины, оказавшиеся в секретном мире кодов, шифров, математических задач, дружбы, усталости и молчания. Это не документальная книга, но она построена на реальном историческом фоне.",
+            "Читать стоит как роман о «невидимой» стороне войны. Здесь почти нет фронта в привычном смысле, зато хорошо видно, что война решалась не только в окопах и штабах, но и за столами, среди бумаг, машин, расчётов и секретов. Особенно интересно смотреть на женский опыт и на то, почему об этой работе долго нельзя было говорить."
+          ]
+        },
+        {
+          "id": "book-24",
+          "title": "Сэм Кин. «Отряд отморозков»",
+          "kind": "научпоп",
+          "description": [
+            "Научно-популярная книга о миссии «Алсос» и борьбе союзников против немецкого ядерного проекта. Это история о том, как физика, разведка, диверсии, учёные, военные решения и страх перед атомной бомбой оказались связаны между собой.",
+            "Читать стоит как книгу о войне науки и разведки. Она показывает, что Вторая мировая была не только столкновением армий, но и борьбой за технологии, информацию и будущее оружие. Хороший вопрос для чтения: что происходит с наукой, когда она становится частью войны?"
+          ]
+        },
+        {
+          "id": "book-25",
+          "title": "Уинстон Черчилль. «Никогда не сдаваться! Лучшие речи Черчилля»",
+          "kind": "мемуары",
+          "description": [
+            "Сборник речей Черчилля за разные годы, из которого для этого маршрута особенно важны выступления 1940–1941 годов: о начале его премьерства, Дюнкерке, битве за Британию, сопротивлении нацизму, нападении Германии на СССР. Это не обычная книга для последовательного чтения, а исторический источник: речь политика в момент огромной опасности.",
+            "Читать лучше выборочно. Важно смотреть не только на то, что Черчилль говорит, но и как он говорит: как признаёт угрозу, не обещая лёгкой победы; как создаёт образ сопротивления; как превращает страх в чувство ответственности. Это хороший текст для разговора о политическом языке войны."
+          ]
+        },
+        {
+          "id": "book-26",
+          "title": "Николас Старгардт. «Мобилизованная нация. Германия 1939–1945»",
+          "kind": "историческое исследование",
+          "description": [
+            "Книга о том, как обычные немцы жили во время войны: что знали, чего боялись, как воспринимали бомбардировки, поражения, нацизм, судьбу евреев, собственную ответственность и будущее Германии. Старгардт показывает войну не только через решения руководства, но и через письма, дневники, слухи, страхи и самооправдания людей.",
+            "Читать лучше фрагментами. Это важная книга для вопроса о гражданском обществе внутри диктатуры и войны: что люди знали, чего не хотели знать, как объясняли себе происходящее и где проходила граница между страхом, незнанием, самообманом и соучастием."
+          ]
+        },
+        {
+          "id": "book-27",
+          "title": "Владислав Шпильман. «Пианист»",
+          "kind": "мемуары",
+          "description": [
+            "Воспоминания польского пианиста Владислава Шпильмана о жизни в оккупированной Варшаве, Варшавском гетто, гибели семьи и собственном выживании во время Холокоста. Это очень сдержанная и страшная книга: Шпильман не превращает пережитое в героический рассказ, а показывает, как постепенно исчезает привычный мир — дом, работа, семья, город, безопасность, само ощущение нормальности.",
+            "Читать стоит как свидетельство человека, который выжил почти невозможным образом и потом попытался рассказать об этом без лишнего пафоса. Важно обращать внимание на детали повседневного выживания, случайности, помощь других людей, одиночество и роль музыки как последней связи с прежней жизнью."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "route-4",
+      "title": "Холодная война и мир во второй половине XX века",
+      "mood": "О послевоенном мире: ядерном страхе, новых конфликтах и жизни по разные стороны границ",
+      "books": [
+        {
+          "id": "book-61",
+          "title": "Феликс Чуев. «140 бесед с Молотовым. Второй после Сталина»",
+          "kind": "мемуары",
+          "description": [
+            "Это книга разговоров с Вячеславом Молотовым — человеком, который очень долго находился рядом с самой верхушкой советской власти. Он видел революцию, Сталина, коллективизацию, репрессии, войну, послевоенную политику и поздний СССР не со стороны, а изнутри системы. Поэтому читать эту книгу интересно не только ради фактов, но и ради самого голоса эпохи: как человек власти вспоминает прошлое, что считает важным, что оправдывает, а о чём говорит холодно или уклончиво.",
+            "Эту книгу особенно важно читать не доверчиво, а внимательно. Молотов не исповедуется и не пытается всё переосмыслить — во многом он остаётся верен своим прежним взглядам."
+          ]
+        },
+        {
+          "id": "book-30",
+          "title": "Майкл Доббс. «За минуту до полуночи. Кеннеди, Хрущёв и Кастро на грани атомной войны»",
+          "kind": "историческое исследование",
+          "description": [
+            "Книга о Карибском кризисе 1962 года — одном из самых опасных моментов холодной войны. Доббс подробно показывает, как США, СССР и Куба оказались на грани ядерной катастрофы, какую роль играли страх, разведданные, ошибки, недоверие, давление военных и личные решения политиков.",
+            "Читать можно почти как исторический триллер, но важно помнить, что речь идёт о реальной угрозе. Главный вопрос: почему мир оказался так близко к ядерной войне — и почему катастрофы всё-таки удалось избежать?"
+          ]
+        },
+        {
+          "id": "book-34",
+          "title": "Светлана Алексиевич. «Чернобыльская молитва»",
+          "kind": "мемуары",
+          "description": [
+            "Книга голосов людей, переживших Чернобыль: ликвидаторов, жён, переселенцев, врачей, жителей заражённых территорий. Формально это уже конец холодной войны, но именно поэтому текст так важен: он показывает позднесоветский мир, ядерную эпоху, секретность, недоверие к государству и катастрофу, которая изменила представление людей о будущем.",
+            "Читать лучше фрагментами: книга тяжёлая. Важно видеть в ней не только рассказ об аварии, но и разговор о системе, которая не умеет говорить правду, о человеке перед невидимой угрозой и о том, как большая история входит в тело, дом, семью и память."
+          ]
+        },
+        {
+          "id": "book-36",
+          "title": "Кристин Ханна. «Женщины»",
+          "kind": "художественная",
+          "description": [
+            "Роман о Вьетнамской войне и о молодой американской медсестре Фрэнсис Макграт, которая отправляется во Вьетнам, а затем возвращается домой и сталкивается с травмой, непризнанием и невозможностью просто продолжить прежнюю жизнь. Это книга о войне, которую обычно рассказывают через солдат-мужчин, но здесь в центре оказывается женский опыт.",
+            "Читать стоит как художественный текст о памяти, травме и праве быть услышанной. Важно помнить: это не историческое исследование Вьетнамской войны, а роман о человеке внутри войны и после неё."
+          ]
+        },
+        {
+          "id": "book-39",
+          "title": "Халед Хоссейни. «Бегущий за ветром»",
+          "kind": "художественная",
+          "description": [
+            "Роман об Афганистане, дружбе, вине, предательстве, войне, беженстве и попытке вернуться к прошлому, которое невозможно исправить до конца. История начинается ещё до советского вторжения, а затем проходит через перевороты, войну, эмиграцию и приход талибов. Через судьбу одного человека видно, как страна меняется под давлением насилия и внешних сил.",
+            "Читать стоит не как учебник по истории Афганистана, а как роман о памяти и ответственности. Важно замечать, как личная вина героя связана с историей страны: частная жизнь и большая политика здесь всё время переплетаются."
+          ]
+        },
+        {
+          "id": "book-40",
+          "title": "Маржан Сатрапи. «Персеполис»",
+          "kind": "художественная",
+          "description": [
+            "Графический роман о детстве и взрослении девочки в Иране во время Исламской революции, войны с Ираком и эмиграции. Это очень личная книга: история страны показана через семью, школу, одежду, музыку, страх, протест, подростковое упрямство и попытку понять, кто ты, когда вокруг всё меняется.",
+            "Читать стоит как свидетельство о жизни подростка внутри революции и нового режима. Формат комикса не делает книгу простой или лёгкой: наоборот, чёрно-белые рисунки помогают очень точно показать страх, абсурд, одиночество и сопротивление."
+          ]
+        },
+        {
+          "id": "book-41",
+          "title": "Роберт Сапольски. «Записки примата»",
+          "kind": "научпоп",
+          "description": [
+            "Книга американского нейробиолога о многолетней работе в Кении, где он изучал павианов и стресс. Это очень живая, смешная и умная книга: в ней есть наука, экспедиционная жизнь, животные с характерами, полевые трудности, африканские пейзажи и встречи с людьми.",
+            "В этот маршрут книга попадает не как история деколонизации напрямую, а как способ увидеть постколониальную Африку глазами внешнего наблюдателя. Очень интересно!"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "route-5",
+      "title": "Повседневность, культура и борьба за права во второй половине XX века",
+      "mood": "О том, как менялись повседневная жизнь, культура и представления людей о свободе",
+      "books": [
+        {
+          "id": "book-43",
+          "title": "Харпер Ли. «Убить пересмешника»",
+          "kind": "художественная",
+          "description": [
+            "Роман о детстве, взрослении, расовой несправедливости и суде в маленьком американском городе. Действие происходит в 1930-е годы, но книга вышла в 1960 году и стала важной для эпохи борьбы за гражданские права. Через взгляд ребёнка здесь видно, как устроены предрассудки взрослого мира и как трудно сохранять честность, когда большинство считает несправедливость нормой.",
+            "Читать стоит не только как историю о судебном деле. Важно смотреть, как дети постепенно начинают понимать устройство общества: кто в нём защищён, кто уязвим, чьему слову верят, а чьё заранее обесценивают."
+          ]
+        },
+        {
+          "id": "book-44",
+          "title": "Мартин Лютер Кинг. Избранные речи",
+          "kind": "мемуары",
+          "description": [
+            "Речи Мартина Лютера Кинга — это важные тексты движения за гражданские права в США. В них звучат идеи ненасильственного сопротивления, равенства, достоинства, справедливости и ответственности общества перед теми, кого оно долго исключало из полноценной политической и человеческой жизни.",
+            "Читать лучше выборочно, особенно важно обращать внимание не только на содержание, но и на язык: как Кинг создаёт образ будущего, к кому обращается, как соединяет религиозные, политические и моральные доводы."
+          ]
+        },
+        {
+          "id": "book-45",
+          "title": "Кэтрин Стокетт. «Прислуга»",
+          "kind": "художественная",
+          "description": [
+            "Роман об американском Юге начала 1960-х годов: белых семьях, чёрных служанках, домашнем труде, страхе, унижении и попытке рассказать правду. Это художественный текст, а не историческое исследование, но он хорошо показывает, как расовая несправедливость живёт не только в законах, но и в самых обычных пространствах — кухне, детской, гостиной, разговоре за столом.",
+            "Читать стоит с вопросом о голосе и риске. Роман помогает увидеть, что борьба за права происходит не только на митингах, но и в повседневных отношениях между людьми."
+          ]
+        },
+        {
+          "id": "book-48",
+          "title": "Аркадий и Борис Стругацкие. «Понедельник начинается в субботу»",
+          "kind": "художественная",
+          "description": [
+            "Повесть о мире советских научных сотрудников, магии, бюрократии, энтузиазма и работы, которая захватывает человека целиком. Это смешная и умная книга о шестидесятнической вере в разум, творчество, науку и возможность заниматься делом не ради отчёта, а потому что оно по-настоящему интересно.",
+            "Читать стоит как сатиру и как утопию одновременно. Здесь важно замечать не только фантастические эпизоды, но и образ сообщества людей, которые живут работой, спорят, исследуют, ошибаются и сопротивляются скуке, формализму и начальственной глупости. Это хороший текст о свободе мысли внутри советской культуры."
+          ]
+        },
+        {
+          "id": "book-57",
+          "title": "Джеймс Хэрриот. «О всех созданиях — больших и малых»",
+          "kind": "научпоп",
+          "description": [
+            "Добрая, смешная книга сельского ветеринара о жизни в английской глубинке середины XX века. Хэрриот пишет о животных, хозяевах ферм, деревенских характерах, профессии, усталости, неловких ситуациях и маленьких радостях повседневной работы. Это не книга о больших политических событиях, но именно через неё хорошо видна обычная жизнь эпохи: труд, община, быт, отношения между людьми и медленное изменение сельского мира.",
+            "Читать стоит как спокойный и светлый текст о профессии, заботе и человеческих характерах. Важно обращать внимание на то, как автор смотрит на людей и животных: с юмором, нежностью и уважением. Эта книга хорошо напоминает, что история XX века состоит не только из войн и кризисов, но и из обычной жизни, работы и способности сохранять доброту."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "route-6",
+      "title": "Дополнительная полка",
+      "mood": "Ещё семь книг, которые помогут увидеть сложный и очень разный XX век",
+      "books": [
+        {
+          "id": "book-51",
+          "title": "Леонид Парфёнов. «Намедни. Наша эра»",
+          "kind": "научпоп",
+          "description": [
+            "«Намедни» — это история недавнего прошлого через события, лица, фильмы, песни, вещи, слова, привычки и визуальные образы эпохи. Парфёнов пишет не как академический историк, а как рассказчик, который собирает атмосферу времени: что люди смотрели, обсуждали, носили, покупали, чего боялись, чему радовались и какие события становились частью общей памяти.",
+            "Читать можно выборочно, по годам или десятилетиям. Особенно полезны тома о 1960–1990-х годах: через них хорошо видно позднесоветскую и постсоветскую повседневность. Это хорошая книга для тех, кто хочет почувствовать эпоху не только через политику, но и через культуру, быт и язык времени."
+          ]
+        },
+        {
+          "id": "book-59",
+          "title": "Андрей Рубанов. «Анастас Микоян»",
+          "kind": "биография",
+          "description": [
+            "Анастас Микоян — один из самых необычных советских политиков: он пережил несколько эпох, работал при Ленине, Сталине, Хрущёве и застал уже брежневское время. Его биография интересна тем, что через одного человека можно увидеть почти всю советскую историю: революцию, сталинскую политику, войну, послевоенное восстановление, реформы, аппаратную борьбу и повседневную сторону власти.",
+            "Эту книгу стоит читать как историю человека, который умел выживать в очень опасной политической системе и оставаться нужным при разных руководителях. Микоян был связан не только с большой политикой, но и с вещами, которые касались обычной жизни: торговлей, снабжением, пищевой промышленностью, продуктами, магазинами, тем, как государство пыталось устроить быт людей. Поэтому его биография помогает увидеть СССР не только через репрессии, войны и идеологию, но и через более будничные вопросы: что люди ели, как работала система снабжения, кто принимал решения и как внутри власти можно было сохранять гибкость."
+          ]
+        },
+        {
+          "id": "book-52",
+          "title": "Орландо Файджес. «Шепчущиеся. Частная жизнь в сталинской России»",
+          "kind": "историческое исследование",
+          "description": [
+            "Книга о том, как сталинская эпоха входила в семью, дом, детство, память и частные разговоры. Файджес пишет о страхе, молчании, доносах, детях репрессированных, семейных тайнах и привычке говорить шёпотом — буквально и внутренне. Это история не только государства и репрессий, но и того, как система меняла поведение людей внутри семьи.",
+            "Читать лучше фрагментами. Важно обращать внимание на частную жизнь: что люди могли говорить дома, о чём молчали, как защищали детей, как хранили память и как страх передавался между поколениями. Книга помогает понять, что диктатура существует не только в приказах и лагерях, но и в повседневной осторожности."
+          ]
+        },
+        {
+          "id": "book-53",
+          "title": "Чингиз Айтматов. «И дольше века длится день»",
+          "kind": "художественная",
+          "description": [
+            "Роман о степи, памяти, традиции, советской модернизации, космосе и человеческой верности. В книге переплетаются разные времена: древние легенды, судьбы людей XX века, железная дорога, космическая тема и вопрос о том, что происходит с человеком и народом, если у них отнимают память.",
+            "Читать стоит как роман о столкновении прошлого и будущего. Особенно важно обращать внимание на мотив памяти: кто и почему хочет её сохранить, а кто — стереть или заменить. Это книга помогает увидеть советский XX век не только из Москвы и не только через политику, а через пространство степи, язык, миф и человеческую судьбу."
+          ]
+        },
+        {
+          "id": "book-55",
+          "title": "Василий Гроссман. «Жизнь и судьба»",
+          "kind": "художественная",
+          "description": [
+            "Большой роман о войне, сталинизме, нацизме, страхе, свободе и человеческом достоинстве. В центре — разные судьбы людей, оказавшихся между двумя системами насилия и внутри огромной исторической катастрофы. Это книга не только о событиях, но и о том, что помогает человеку оставаться человеком, когда вокруг действуют государство, идеология, война и страх.",
+            "Читать целиком необязательно, хотя для сильных читателей это одна из главных книг XX века. Можно выбирать отдельные линии и главы: Сталинград, лагерь, семью Шапошниковых, размышления о свободе и насилии. Главный вопрос к книге: что сильнее — система, которая подчиняет человека, или человеческая способность к состраданию и внутренней свободе?"
+          ]
+        },
+        {
+          "id": "book-56",
+          "title": "Александр Солженицын. «Матрёнин двор»",
+          "kind": "художественная",
+          "description": [
+            "Короткий рассказ о послевоенной деревне, бедности, одиночестве, нравственной силе и человеке, которого почти никто не умеет ценить при жизни. Матрёна живёт просто, трудно и незаметно, но именно в ней рассказчик видит редкую человеческую правду и внутреннюю опору.",
+            "Читать стоит внимательно к деталям быта: дом, работа, вещи, деревенские отношения, разговоры, бедность, усталость. Это небольшой текст, но он помогает увидеть послевоенный советский мир без парадности и лозунгов."
+          ]
+        },
+        {
+          "id": "book-54",
+          "title": "Анатолий Рыбаков. «Дети Арбата»",
+          "kind": "художественная",
+          "description": [
+            "Роман о молодости в 1930-е годы, о поколении, которое верит в будущее, строит планы, дружит, влюбляется, спорит — и постепенно оказывается внутри сталинской системы страха и насилия. Рыбаков показывает, как большая история входит в жизнь молодых людей не сразу, а через аресты, слухи, карьеру, осторожность, идеологические формулы и слом привычного мира.",
+            "Читать стоит как книгу о взрослении в несвободное время. Важно смотреть, как меняются герои: кто пытается понять происходящее, кто приспосабливается, кто делает вид, что всё нормально, кто оказывается жертвой системы."
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+  </script>
+  <script>
+const filmData = {
+  "sections": [
+    {
+      "id": "film-section-1",
+      "title": "Художественные фильмы",
+      "mood": "Истории о людях, которым пришлось жить, выбирать и меняться вместе с XX веком",
+      "items": [
+        {
+          "id": "film-1",
+          "title": "«Бег», 1970",
+          "description": [
+            "Фильм о России после революции и Гражданской войны: отступлении Белой армии, эмиграции, потере дома и крушении прежнего мира. Смотреть стоит как историю о людях, которых большая история выбросила из привычной жизни и заставила заново искать своё место."
+          ]
+        },
+        {
+          "id": "film-2",
+          "title": "«Утомлённые солнцем», 1994",
+          "description": [
+            "СССР 1930-х годов: дача, семья, память о революции, власть, страх и приближение Большого террора. Важно смотреть не только на сюжет, но и на то, как политическое насилие входит в частную жизнь, где до последнего сохраняется иллюзия безопасности."
+          ]
+        },
+        {
+          "id": "film-3",
+          "title": "«Летят журавли», 1957",
+          "description": [
+            "Фильм о войне, любви, потере, ожидании и чувстве вины. Он показывает Великую Отечественную не как парад героизма, а как трагедию, которая ломает мирную жизнь и меняет человека изнутри."
+          ]
+        },
+        {
+          "id": "film-4",
+          "title": "«Иваново детство», 1962",
+          "description": [
+            "Война показана глазами мальчика, у которого она отняла детство. Смотреть стоит как фильм о травме, одиночестве, памяти и невозможности вернуться к нормальной жизни после пережитого."
+          ]
+        },
+        {
+          "id": "film-5",
+          "title": "«Пианист», 2002",
+          "description": [
+            "Фильм о польском музыканте Владиславе Шпильмане, Варшавском гетто, Холокосте и выживании в оккупированном городе. Это важный текст о Второй мировой войне, где история видна через судьбу одного человека и исчезновение привычного мира вокруг него."
+          ]
+        },
+        {
+          "id": "film-6",
+          "title": "«Жизнь прекрасна», 1997",
+          "description": [
+            "Фильм о Холокосте, отцовской любви и попытке защитить ребёнка от ужаса происходящего. Его важно смотреть внимательно: он говорит о страшной теме через необычное соединение трагедии, игры и человеческой нежности."
+          ]
+        },
+        {
+          "id": "film-7",
+          "title": "«Жизнь других», 2006",
+          "description": [
+            "ГДР 1980-х годов: слежка, страх, культура и частная жизнь под наблюдением государства. Фильм хорошо показывает, как несвободная система контролирует не только поступки, но и доверие между людьми."
+          ]
+        },
+        {
+          "id": "film-8",
+          "title": "«Персеполис», 2007",
+          "description": [
+            "Анимационный фильм о девочке, которая взрослеет во время Иранской революции и после неё. Это история о семье, свободе, эмиграции, государственном контроле и том, как большая политика меняет повседневную жизнь подростка."
+          ]
+        },
+        {
+          "id": "film-9",
+          "title": "«Прислуга», 2011",
+          "description": [
+            "США 1960-х годов: расовая сегрегация, домашний труд, женская солидарность и право говорить о собственном опыте. Фильм показывает борьбу за достоинство не через лидеров движения, а через повседневные унижения, страх и попытку вернуть себе голос."
+          ]
+        },
+        {
+          "id": "film-10",
+          "title": "«Зелёная книга», 2018",
+          "description": [
+            "США начала 1960-х годов: расовая сегрегация, музыка, гастроли и вынужденное соседство людей из разных миров. Смотреть стоит как историю о расизме, классе, достоинстве и постепенном изменении человека через личную встречу."
+          ]
+        },
+        {
+          "id": "film-11",
+          "title": "«Завтра была война», 1987",
+          "description": [
+            "СССР конца 1930-х годов: школа, комсомол, дружба, страх и идеологическое давление накануне войны. Фильм важен тем, что показывает сталинскую эпоху через подростковую среду, где государственный язык входит в отношения и личный выбор."
+          ]
+        },
+        {
+          "id": "film-12",
+          "title": "«Холодное лето пятьдесят третьего…», 1987",
+          "description": [
+            "СССР после смерти Сталина: амнистия 1953 года, бывшие политические заключённые, насилие и тревожное ожидание перемен. Фильм помогает увидеть, что конец диктатора ещё не означает мгновенного возвращения справедливости и безопасности."
+          ]
+        },
+        {
+          "id": "film-13",
+          "title": "«Сто дней после детства», 1975",
+          "description": [
+            "Фильм о подростках, летнем лагере, первой любви, театре и взрослении. Он хорошо показывает советскую культуру 1970-х: воспитание, чтение, разговоры о чувствах и момент, когда человек начинает серьёзнее смотреть на себя и других."
+          ]
+        },
+        {
+          "id": "film-14",
+          "title": "«Чистое небо», 1961",
+          "description": [
+            "История лётчика, который после войны оказывается под подозрением и пытается вернуться к нормальной жизни. Фильм связывает войну, поздний сталинизм и оттепель: в нём важны травма, несправедливость и возможность заново обрести достоинство."
+          ]
+        },
+        {
+          "id": "film-15",
+          "title": "«Скрытые фигуры», 2016",
+          "description": [
+            "США 1960-х годов: NASA, космическая гонка, расовая сегрегация, женский труд и борьба за признание. Фильм хорошо соединяет холодную войну, науку, права женщин и афроамериканцев."
+          ]
+        },
+        {
+          "id": "film-16",
+          "title": "«Тёмные времена», 2017",
+          "description": [
+            "Британия в 1940 году: Черчилль, Дюнкерк, политическое давление и выбор между переговорами и сопротивлением. Смотреть стоит как фильм о лидерстве, публичной речи и ответственности в момент исторического кризиса."
+          ]
+        },
+        {
+          "id": "film-17",
+          "title": "«Король говорит!», 2010",
+          "description": [
+            "Британия накануне Второй мировой войны: монархия, радио, публичная речь и личная неуверенность человека, которому нужно говорить от имени страны. Фильм показывает, как политика XX века связана с медиа, голосом и образом лидера."
+          ]
+        },
+        {
+          "id": "film-18",
+          "title": "«Октябрьское небо», 1999",
+          "description": [
+            "США конца 1950-х годов: шахтёрский город, запуск спутника, мечта о космосе, образование и выбор будущего. Это фильм о том, как космическая гонка и холодная война меняли мечты обычных подростков."
+          ]
+        },
+        {
+          "id": "film-19",
+          "title": "«Список Шиндлера», 1993",
+          "description": [
+            "Фильм о Холокосте, нацистской оккупации, фабрике Шиндлера и спасении людей внутри системы массового уничтожения. Смотреть стоит как серьёзное историческое кино о насилии, выборе, ответственности и цене человеческой жизни."
+          ]
+        },
+        {
+          "id": "film-20",
+          "title": "«Форрест Гамп», 1994",
+          "description": [
+            "Фильм о человеке, чья жизнь проходит через несколько десятилетий американской истории второй половины XX века. Через его судьбу видны Вьетнамская война, движение за гражданские права, протестная культура, телевидение, музыка и политические кризисы."
+          ]
+        },
+        {
+          "id": "film-21",
+          "title": "«Москва слезам не верит», 1979",
+          "description": [
+            "Фильм о Москве 1950–1970-х годов, взрослении, работе, любви, социальном подъёме и женской самостоятельности. Через историю трёх подруг хорошо видны общежитие, завод, образование, карьера и советские представления об успехе."
+          ]
+        },
+        {
+          "id": "film-22",
+          "title": "«Доживём до понедельника», 1968",
+          "description": [
+            "Фильм о советской школе 1960-х годов, учителях, учениках, честности и взрослении. Смотреть стоит как историю о том, как школа становится местом сложного разговора о свободе, доверии и понимании между людьми."
+          ]
+        },
+        {
+          "id": "film-23",
+          "title": "«Покровские ворота», 1982",
+          "description": [
+            "Фильм о Москве 1950-х годов, коммунальной квартире, соседях, старой интеллигенции, любви и смене эпохи. За лёгкой комедией хорошо виден мир послевоенной городской повседневности: комнаты, кухни, привычки, разговоры и московский быт."
+          ]
+        },
+        {
+          "id": "film-24",
+          "title": "«Серёжа», 1960",
+          "description": [
+            "Фильм о маленьком мальчике, его маме, новом отце и мире взрослых, который ребёнок пытается понять. Это очень тонкое кино об оттепельной повседневности: семье, дворе, доверии, заботе и разговоре с ребёнком всерьёз."
+          ]
+        },
+        {
+          "id": "film-25",
+          "title": "«Курьер», 1986",
+          "description": [
+            "Фильм о позднем СССР: выпускник школы не поступает в институт, работает курьером и сталкивается с миром взрослых, московской интеллигенции и собственной неопределённости. Смотреть стоит как историю о поколении, которое уже чувствует: привычные советские ответы больше не работают."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "film-section-2",
+      "title": "Документальные фильмы и сериалы",
+      "mood": "Хроника и свидетельства, которые помогают увидеть эпоху ближе и разобраться в её событиях",
+      "items": [
+        {
+          "id": "film-26",
+          "title": "«Намедни. Наша эра», 1961–2003 / «Нмдни»",
+          "exam": true,
+          "description": [
+            "Документальный цикл Леонида Парфёнова о позднем СССР, перестройке, 1990-х и начале 2000-х. Его не нужно смотреть целиком: лучше выбирать отдельные годы под тему — оттепель, застой, Афганистан, перестройка, распад СССР, 1990-е, новая Россия.",
+            "Смотреть стоит как живую энциклопедию времени. Здесь важны не только политика и большие события, но и вещи, мода, песни, телевидение, реклама, язык, привычки — всё то, из чего складывается память об эпохе. Этот цикл хорошо помогает почувствовать, чем жили люди и как менялась страна не только в новостях, но и в повседневности."
+          ]
+        },
+        {
+          "id": "film-27",
+          "title": "«Рождённые в СССР», 1991–2012",
+          "description": [
+            "Документальный проект, в котором одних и тех же людей снимают с детства и дальше через несколько лет. Герои взрослеют вместе со страной: их детство приходится на конец СССР, подростковый возраст — на 1990-е, взрослая жизнь — уже на постсоветское время.",
+            "Смотреть стоит как историю перемен, рассказанную не через политиков, а через обычных людей. Особенно интересно наблюдать, как меняются мечты, язык, семьи, профессии, чувство будущего и представление о нормальной жизни. Это хороший способ увидеть, что распад страны — не только событие на карте, но и опыт конкретных людей."
+          ]
+        },
+        {
+          "id": "film-28",
+          "title": "«Обыкновенный фашизм», 1965",
+          "description": [
+            "Документальный фильм Михаила Ромма о нацизме, пропаганде, массовом подчинении и превращении общества в часть преступной системы. Это не просто фильм о Германии 1930–1940-х годов, а размышление о том, как люди привыкают к насилию, лозунгам и образу врага.",
+            "Смотреть стоит внимательно и не как «старый учебный фильм». В нём очень важна авторская интонация: Ромм не только показывает хронику, но и всё время спрашивает, как такое стало возможным. Фильм помогает говорить не только о фашизме как историческом явлении, но и о человеческой ответственности перед лицом зла."
+          ]
+        },
+        {
+          "id": "film-29",
+          "title": "«Великая война», 2010",
+          "exam": true,
+          "description": [
+            "Российский документальный цикл о Великой Отечественной войне. Он даёт понятный обзор ключевых событий: начало войны, главные сражения, блокаду, тыл, освобождение территории, путь к победе.",
+            "Этот цикл особенно полезен тем, кто готовится к ЕГЭ. Он помогает собрать в голове хронологию, этапы войны, названия операций, ключевые битвы, роли командующих, значение тыла и цену победы. Смотреть его лучше не подряд, а по темам, фиксируя даты, события, участников и причинно-следственные связи."
+          ]
+        },
+        {
+          "id": "film-30",
+          "title": "«Апокалипсис: Вторая мировая война», 2009",
+          "description": [
+            "Документальный сериал о Второй мировой войне, собранный из хроники и архивных материалов. Он показывает войну как мировую катастрофу: фронты, оккупацию, армии, мирное население, разрушение городов и жизнь людей внутри насилия.",
+            "Смотреть лучше выборочно, по темам или сериям. Важно обращать внимание не только на ход войны, но и на то, как хроника действует на зрителя: что мы видим своими глазами, а что всё равно требует объяснения и исторического контекста. Сериал хорошо помогает почувствовать масштаб войны, но его стоит смотреть вдумчиво, не заменяя им учебник."
+          ]
+        },
+        {
+          "id": "film-31",
+          "title": "«Страна Советов. Забытые вожди», 2017–2019",
+          "exam": true,
+          "description": [
+            "Документально-игровой сериал о советских партийных, государственных и военных деятелях: Дзержинском, Молотове, Ворошилове, Будённом, Жданове, Берии, Абакумове, Громыко, Микояне, Фрунзе, Орджоникидзе, Маленкове, Луначарском, Косыгине и других. Через их биографии можно увидеть, как строилась и менялась советская власть: революция, Гражданская война, сталинская система, репрессии, война, послевоенное управление и позднесоветская политика.",
+            "Для подготовки к ЕГЭ этот сериал особенно полезен: он помогает запомнить не только первых лиц, но и людей «второго ряда», которые часто встречаются в заданиях, источниках и исторических характеристиках. Смотреть его нужно критически: важно отмечать, с какими событиями связан каждый герой, какие решения он принимал, какую роль играл в системе власти — и отдельно думать о вопросе ответственности, особенно в сериях о репрессиях и силовых структурах."
+          ]
+        },
+        {
+          "id": "film-32",
+          "title": "«Холодная война» / Cold War, 1998",
+          "description": [
+            "Русская версия может быть недоступна; возможно, потребуется английский язык или субтитры.",
+            "Большой документальный сериал CNN о противостоянии СССР и США после Второй мировой войны. Он охватывает Берлин, ядерную гонку, Корею, Карибский кризис, Вьетнам, Афганистан, перестройку и завершение холодной войны.",
+            "Смотреть лучше отдельными сериями, под конкретную тему. Сериал помогает увидеть, что холодная война — это не только дипломатия и оружие, но и страх, идеология, пропаганда, союзники, локальные войны и жизнь людей в мире, где ядерная катастрофа казалась вполне возможной."
+          ]
+        },
+        {
+          "id": "film-33",
+          "title": "«The Century: America’s Time», 1999",
+          "description": [
+            "Русская версия может быть недоступна; возможно, потребуется английский язык или субтитры.",
+            "Документальный сериал об истории США в XX веке: войны, Великая депрессия, массовая культура, движение за гражданские права, Вьетнам, холодная война и общественные перемены. Его можно смотреть выборочно, под конкретные темы.",
+            "Сериал помогает лучше понять американский XX век: не только президентов и войны, но и телевидение, музыку, рекламу, протесты, школу, семью, потребление и образ «американской мечты». Он хорош тем, что показывает, как политика и повседневность всё время влияют друг на друга."
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+  </script>
+  <script>
+const storageKey = "history-reading-10-marks";
+
+const state = {
+  search: "",
+  kind: "all",
+  marks: loadMarks(),
+};
+
+const introEl = document.querySelector("#intro");
+const routesEl = document.querySelector("#routes");
+const filtersEl = document.querySelector("#kindFilters");
+const legendEl = document.querySelector("#kindLegend");
+const searchEl = document.querySelector("#search");
+const tabButtons = document.querySelectorAll(".tab-button");
+const bookOnlyBlocks = document.querySelectorAll(".book-only");
+const booksPanel = document.querySelector("#booksPanel");
+const shelfPanel = document.querySelector("#shelfPanel");
+const filmsPanel = document.querySelector("#filmsPanel");
+const filmRoutesEl = document.querySelector("#filmRoutes");
+const shelfEl = document.querySelector("#shelf");
+const shelfSummaryEl = document.querySelector("#shelfSummary");
+
+const kindIcons = {
+  "художественная": `<svg viewBox="0 0 42 42" aria-hidden="true"><rect x="7" y="11" width="13" height="23" fill="#e53928"/><rect x="22" y="8" width="13" height="26" fill="#1357a6"/><path d="M20 13c4-3 8-3 12 0v22c-4-3-8-3-12 0-4-3-8-3-12 0V13c4-3 8-3 12 0Z" fill="none" stroke="#111" stroke-width="2.7"/></svg>`,
+  "биография": `<svg viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="16" fill="#f3c400" stroke="#111" stroke-width="2.7"/><path d="M25 14c0 4-2 6-5 7 3 1 6 4 7 8H14c1-4 4-7 7-8-3-1-5-3-5-7 0-3 2-5 5-5s4 2 4 5Z" fill="#fff4d6" stroke="#111" stroke-width="2.4" stroke-linejoin="round"/><rect x="29" y="27" width="7" height="7" fill="#1357a6" stroke="#111" stroke-width="2"/></svg>`,
+  "историческое исследование": `<svg viewBox="0 0 42 42" aria-hidden="true"><circle cx="14" cy="25" r="9" fill="#f3c400"/><rect x="19" y="9" width="13" height="24" fill="#fff4d6" stroke="#111" stroke-width="2.7"/><path d="M10 33 31 12M25 10l6 2-2 6M16 27h13" stroke="#111" stroke-width="2.7" stroke-linecap="round"/></svg>`,
+  "мемуары": `<svg viewBox="0 0 42 42" aria-hidden="true"><rect x="17" y="16" width="8" height="18" fill="#fff4d6" stroke="#111" stroke-width="2.7"/><path d="M21 5c5 6 3 10 0 12-3-2-5-6 0-12Z" fill="#e53928" stroke="#111" stroke-width="2.3"/><path d="M9 34h24" stroke="#111" stroke-width="3" stroke-linecap="round"/><circle cx="31" cy="12" r="4" fill="#1357a6"/></svg>`,
+  "научпоп": `<svg viewBox="0 0 42 42" aria-hidden="true"><circle cx="18" cy="18" r="10" fill="#f3c400" stroke="#111" stroke-width="2.7"/><path d="M25 25 34 34" stroke="#111" stroke-width="4" stroke-linecap="round"/><rect x="7" y="28" width="10" height="7" fill="#e53928"/><circle cx="31" cy="10" r="4" fill="#1357a6"/></svg>`,
+  "документальная": `<svg viewBox="0 0 42 42" aria-hidden="true"><rect x="10" y="6" width="22" height="30" fill="#fff4d6" stroke="#111" stroke-width="2.7"/><path d="M15 15h12M15 21h12M15 27h8" stroke="#111" stroke-width="2.4" stroke-linecap="round"/><circle cx="31" cy="31" r="5" fill="#e53928"/></svg>`,
+};
+
+const normalize = (value) => value.toLocaleLowerCase("ru-RU");
+
+function loadMarks() {
+  try {
+    return JSON.parse(localStorage.getItem(storageKey)) || {};
+  } catch {
+    return {};
+  }
+}
+
+function saveMarks() {
+  localStorage.setItem(storageKey, JSON.stringify(state.marks));
+}
+
+function getMark(id) {
+  return state.marks[id] || { liked: false, read: false };
+}
+
+function setMark(id, field) {
+  const mark = getMark(id);
+  const next = { ...mark, [field]: !mark[field] };
+  if (!next.liked && !next.read) {
+    delete state.marks[id];
+  } else {
+    state.marks[id] = next;
+  }
+  saveMarks();
+}
+
+function flatBooks() {
+  return readingData.routes.flatMap((route) => route.books.map((book) => ({ ...book, routeTitle: route.title, itemType: "book" })));
+}
+
+function flatFilms() {
+  return filmData.sections.flatMap((section) => section.items.map((film) => ({ ...film, routeTitle: section.title, itemType: "film", kind: "фильм" })));
+}
+
+function renderIntro() {
+  introEl.innerHTML = `<ul class="rules-list">${readingData.intro.map((text) => `<li>${text}</li>`).join("")}</ul>`;
+}
+
+function allKinds() {
+  const kinds = new Set();
+  readingData.routes.forEach((route) => route.books.forEach((book) => kinds.add(book.kind)));
+  return ["all", ...Array.from(kinds).sort((a, b) => a.localeCompare(b, "ru"))];
+}
+
+function renderFilters() {
+  filtersEl.innerHTML = allKinds().map((kind) => {
+    const active = state.kind === kind ? "is-active" : "";
+    const label = kind === "all" ? "все" : kind;
+    const icon = kind === "all" ? "все" : kindIcons[kind] || "•";
+    return `<button class="filter-button ${active}" data-kind="${kind}" title="${label}" aria-label="${label}">${icon}</button>`;
+  }).join("");
+}
+
+function renderLegend() {
+  legendEl.innerHTML = allKinds().filter((kind) => kind !== "all").map((kind) => `
+    <span class="legend-item"><span class="kind" aria-hidden="true">${kindIcons[kind] || "•"}</span><span>${kind}</span></span>
+  `).join("");
+}
+
+function bookMatches(book, route) {
+  const haystack = normalize([route.title, route.mood, book.title, book.kind, ...book.description].join(" "));
+  const matchesSearch = !state.search || haystack.includes(normalize(state.search));
+  const matchesKind = state.kind === "all" || book.kind === state.kind;
+  return matchesSearch && matchesKind;
+}
+
+function renderKind(kind) {
+  return `<span class="kind" title="${kind}" aria-label="${kind}">${kindIcons[kind] || "•"}</span>`;
+}
+
+function renderActions(item) {
+  const mark = getMark(item.id);
+  return `
+    <div class="book-actions" aria-label="Отметки">
+      <button class="mark-button ${mark.liked ? "is-active" : ""}" type="button" data-id="${item.id}" data-mark="liked" title="Нравится" aria-label="Нравится">♥</button>
+      <button class="mark-button ${mark.read ? "is-active" : ""}" type="button" data-id="${item.id}" data-mark="read" title="Прочитано или просмотрено" aria-label="Прочитано или просмотрено">✓</button>
+    </div>
+  `;
+}
+
+function renderRoutes() {
+  const html = readingData.routes.map((route, index) => {
+    const books = route.books.filter((book) => bookMatches(book, route));
+    if (!books.length) return "";
+    return `
+      <article class="route-card route-${index % 6}" id="${route.id}">
+        <button class="route-toggle" type="button" aria-expanded="false">
+          <span><span class="route-title">${route.title}</span><span class="route-meta">${route.mood}</span></span>
+          <span class="route-count" aria-label="Количество книг">${books.length}</span>
+        </button>
+        <div class="items">
+          ${books.map((book) => `
+            <article class="item-card" id="${book.id}">
+              <button class="item-toggle" type="button" aria-expanded="false">
+                <span class="item-title">${book.title}</span>
+                ${renderKind(book.kind)}
+              </button>
+              <div class="item-description">
+                ${book.description.map((paragraph) => `<p>${paragraph}</p>`).join("")}
+                ${renderActions(book)}
+              </div>
+            </article>
+          `).join("")}
+        </div>
+      </article>
+    `;
+  }).join("");
+  routesEl.innerHTML = html || `<div class="no-results">По этому запросу ничего не нашлось. Попробуйте другое слово или сбросьте фильтр.</div>`;
+}
+
+function renderFilms() {
+  filmRoutesEl.innerHTML = filmData.sections.map((section, index) => `
+    <article class="route-card film-section route-${(index + 2) % 6}" id="${section.id}">
+      <button class="route-toggle" type="button" aria-expanded="false">
+        <span><span class="route-title">${section.title}</span><span class="route-meta">${section.mood}</span></span>
+        <span class="route-count" aria-label="Количество фильмов">${section.items.length}</span>
+      </button>
+      <div class="items">
+        ${section.items.map((film) => `
+          <article class="item-card film-card" id="${film.id}">
+            <button class="item-toggle" type="button" aria-expanded="false">
+              <span class="item-heading">
+                <span class="item-title">${film.title}</span>
+                ${film.exam ? `<span class="exam-badge" aria-label="Полезно для подготовки к ЕГЭ">ЕГЭ</span>` : ""}
+              </span>
+            </button>
+            <div class="item-description">
+              ${film.description.map((paragraph) => `<p>${paragraph}</p>`).join("")}
+              ${renderActions(film)}
+            </div>
+          </article>
+        `).join("")}
+      </div>
+    </article>
+  `).join("");
+}
+
+function renderShelf() {
+  const items = [...flatBooks(), ...flatFilms()];
+  const saved = items.filter((item) => {
+    const mark = getMark(item.id);
+    return mark.liked || mark.read;
+  });
+  const liked = saved.filter((item) => getMark(item.id).liked).length;
+  const read = saved.filter((item) => getMark(item.id).read).length;
+
+  shelfSummaryEl.innerHTML = `
+    <article class="summary-tile"><strong>${liked}</strong><span>понравилось</span></article>
+    <article class="summary-tile"><strong>${read}</strong><span>прочитано / просмотрено</span></article>
+  `;
+
+  shelfEl.innerHTML = saved.length ? saved.map((item) => `
+    <article class="shelf-card">
+      <p>${item.routeTitle}</p>
+      <h3>${item.title}${item.exam ? ` <span class="exam-badge" aria-label="Полезно для подготовки к ЕГЭ">ЕГЭ</span>` : ""}</h3>
+      ${renderActions(item)}
+    </article>
+  `).join("") : `<div class="no-results">Пока здесь пусто. Отметьте сердечком или галочкой книгу либо фильм, и они появятся на вашей полке.</div>`;
+}
+
+function setActiveTab(tab) {
+  tabButtons.forEach((button) => button.classList.toggle("is-active", button.dataset.tab === tab));
+  booksPanel.classList.toggle("is-active", tab === "books");
+  shelfPanel.classList.toggle("is-active", tab === "shelf");
+  filmsPanel.classList.toggle("is-active", tab === "films");
+  bookOnlyBlocks.forEach((block) => block.classList.toggle("is-hidden", tab !== "books"));
+  if (tab === "shelf") renderShelf();
+}
+
+document.addEventListener("click", (event) => {
+  const tab = event.target.closest(".tab-button");
+  if (tab) setActiveTab(tab.dataset.tab);
+
+  const filter = event.target.closest(".filter-button");
+  if (filter) {
+    state.kind = filter.dataset.kind;
+    renderFilters();
+    renderRoutes();
+  }
+
+  const routeToggle = event.target.closest(".route-toggle");
+  if (routeToggle) {
+    const card = routeToggle.closest(".route-card");
+    const open = card.classList.toggle("is-open");
+    routeToggle.setAttribute("aria-expanded", String(open));
+  }
+
+  const itemToggle = event.target.closest(".item-toggle");
+  if (itemToggle) {
+    const card = itemToggle.closest(".item-card");
+    const open = card.classList.toggle("is-open");
+    itemToggle.setAttribute("aria-expanded", String(open));
+  }
+
+  const markButton = event.target.closest(".mark-button");
+  if (markButton) {
+    setMark(markButton.dataset.id, markButton.dataset.mark);
+    renderRoutes();
+    renderFilms();
+    renderShelf();
+  }
+});
+
+searchEl.addEventListener("input", (event) => {
+  state.search = event.target.value;
+  renderRoutes();
+});
+
+renderIntro();
+renderFilters();
+renderLegend();
+renderRoutes();
+renderFilms();
+renderShelf();
+
+  </script>
+</body>
+</html>
